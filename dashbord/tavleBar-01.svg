@@ -1,0 +1,27 @@
+<svg id="tavleBar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1079.00606 303.75915">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #6a4c1c;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #000;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        stroke: #fff;
+      }
+    </style>
+  </defs>
+  <title>tavleBar</title>
+  <rect class="cls-1" x="0.5" y="0.5" width="1078.00606" height="302.75915"/>
+  <rect class="cls-2" x="21.90721" y="23.4363" width="1032.13346" height="260.55082"/>
+  <rect class="cls-3" x="34.37077" y="273.63244" width="50.78632" height="9.55978"/>
+  <rect class="cls-3" x="65.7388" y="264.01722" width="60.94359" height="10.75475" transform="translate(88.60612 -16.56362) rotate(18.13019)"/>
+</svg>
