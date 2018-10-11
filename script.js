@@ -19,7 +19,6 @@ function init() {
   beerStatus();
   queueStatus();
   servingStatus();
-  test();
 }
 
 function fetchData() {
