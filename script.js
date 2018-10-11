@@ -19,7 +19,6 @@ function init() {
   beerStatus();
   queueStatus();
   servingStatus();
-  test();
 }
 
 function fetchData() {
@@ -98,24 +97,6 @@ function checkBeerStatus() {
   display.appendChild(clone);
 
   counter++;
-}
-
-function test() {
-  taps = dataArray.taps;
-
-  taps.forEach(arraytest);
-
-  //  setTimeout(test, 5000);
-}
-
-function arraytest() {
-  // myTaps = taps[tapsCounter];
-
-  //myTaps.push(taps[tapsCounter]);
-
-  // console.log(tapsCounter);
-
-  tapsCounter++;
 }
 
 function queueStatus() {
