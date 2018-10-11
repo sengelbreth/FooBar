@@ -18,7 +18,7 @@ function init() {
   dailyOffer();
   beerStatus();
   queueStatus();
-  checkServingStatus();
+  servingStatus();
   test();
 }
 
@@ -69,10 +69,10 @@ function checkOpening() {
 function dailyOffer() {
   checkDailyOffer();
 
-  document.querySelector(".bestseller").textContent =
+  document.querySelector(".dailyOffer").textContent =
     dataArray.storage[randomNumber].name;
 
-  setTimeout(bestSeller, 180000);
+  setTimeout(dailyOffer, 180000);
 }
 // check
 function checkDailyOffer() {
@@ -118,8 +118,6 @@ function arraytest() {
   tapsCounter++;
 }
 
-function colorAnimation() {}
-
 function queueStatus() {
   checkQueueStatus();
 
@@ -132,10 +130,9 @@ function checkQueueStatus() {
 
   setTimeout(queueStatus, 2000);
 }
-
 // check
-function servingStatus() {}
-function checkServingStatus() {
+
+function servingStatus() {
   serving = dataArray.serving.length;
 
   // ---------- serverer 1 person ------------------- //
@@ -197,7 +194,6 @@ function checkServingStatus() {
     ).innerHTML = `<img src="dashbord/tomol3-01.svg">`;
   }
 
-  setTimeout(checkServingStatus, 2000);
+  setTimeout(servingStatus, 2000);
 }
-
 // check
