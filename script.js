@@ -70,9 +70,9 @@ function dailyOffer() {
   checkDailyOffer();
 
   document.querySelector(".dailyOffer").textContent =
-    dataArray.storage[randomNumber].name;
+    dataArray.storage[randomNumber].name + " 10%";
 
-  setTimeout(dailyOffer, 180000);
+  setTimeout(dailyOffer, 60000);
 }
 // check
 function checkDailyOffer() {
