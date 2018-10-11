@@ -1,30 +1,30 @@
 let dataArray;
-let time = new Date();
-let h = time.getHours();
-let m = time.getMinutes();
-let s = time.getSeconds();
-let hToSec = h * 3600;
-let mToSec = m * 60;
-let closingHour = 22 * 3600;
-let currentHour = hToSec + mToSec;
-let timeLeft = closingHour - currentHour;
 let counter = 0;
 let randomNumber;
+let beers;
+let taps;
+let myTaps = [];
+let tapsCounter = 0;
+let queue;
+let serving;
+let temp = document.querySelector("#beers");
+let display = document.querySelector(".beers");
+
 document.querySelector("DOMContentLoaded", init());
 
 function init() {
-  console.log("we´re live");
-
   fetchData();
   openingStatus();
-  bestSeller();
+  dailyOffer();
+  beerStatus();
+  queueStatus();
+  checkServingStatus();
+  test();
 }
 
 function fetchData() {
   let fooData = FooBar.getData();
   dataArray = JSON.parse(fooData);
-
-  // console.log(dataArray);
 
   setTimeout(fetchData, 3000);
 } // check
@@ -53,7 +53,8 @@ function checkOpening() {
     let hh = pad((remain / 60 / 60) % 60);
     let mm = pad((remain / 60) % 60);
     let ss = pad(remain % 60);
-    document.querySelector(".time").innerHTML = hh + ":" + mm + ":" + ss;
+    document.querySelector(".time").innerHTML =
+      "Closing in " + hh + ":" + mm + ":" + ss;
     setTimeout(tick, 1000);
 
     if (hh > 11) {
@@ -65,26 +66,138 @@ function checkOpening() {
 }
 // check
 
-function bestSeller() {
-  checkBestSeller();
-  console.log(randomNumber);
-
-  console.log(dataArray.storage[randomNumber].name);
+function dailyOffer() {
+  checkDailyOffer();
 
   document.querySelector(".bestseller").textContent =
     dataArray.storage[randomNumber].name;
 
-  setTimeout(bestSeller, 5000);
+  setTimeout(bestSeller, 180000);
 }
-
-function checkBestSeller() {
+// check
+function checkDailyOffer() {
   randomNumber = Math.floor(Math.random() * 9) + 0;
 }
-function beerStatus() {}
-function checkBeerStatus() {}
+// check
+
+function beerStatus() {
+  beers = dataArray.beertypes;
+
+  beers.forEach(checkBeerStatus);
+}
+function checkBeerStatus() {
+  let beer = beers[counter];
+  let clone = temp.cloneNode(true).content;
+
+  clone.querySelector("span:nth-child(1)").innerHTML = beer.name;
+  clone.querySelector("span:nth-child(2)").innerHTML = beer.category;
+  clone.querySelector(
+    "span:nth-child(3)"
+  ).innerHTML = `<img src=images/${counter}.png>`;
+  clone.querySelector("span:nth-child(4)").innerHTML = "00,-";
+  display.appendChild(clone);
+
+  counter++;
+}
+
+function test() {
+  taps = dataArray.taps;
+
+  taps.forEach(arraytest);
+
+  //  setTimeout(test, 5000);
+}
+
+function arraytest() {
+  // myTaps = taps[tapsCounter];
+
+  //myTaps.push(taps[tapsCounter]);
+
+  // console.log(tapsCounter);
+
+  tapsCounter++;
+}
+
 function colorAnimation() {}
-function queueStatus() {}
-function checkQueueStatus() {}
+
+function queueStatus() {
+  checkQueueStatus();
+
+  document.querySelector(".queue").textContent = "People in queue " + queue;
+}
+
+// check
+function checkQueueStatus() {
+  queue = dataArray.queue.length;
+
+  setTimeout(queueStatus, 2000);
+}
+
+// check
 function servingStatus() {}
-function checkServingStatus() {}
-function beerAnimation() {}
+function checkServingStatus() {
+  serving = dataArray.serving.length;
+
+  // ---------- serverer 1 person ------------------- //
+  if (serving == 1) {
+    document.querySelector(
+      ".beer1"
+    ).innerHTML = `<img src="dashbord/fuldol1-01.svg">`;
+
+    document.querySelector(
+      ".beer2"
+    ).innerHTML = `<img src="dashbord/tomol2-01.svg">`;
+    document.querySelector(
+      ".beer3"
+    ).innerHTML = `<img src="dashbord/tomol3-01.svg">`;
+  }
+
+  // --------------- serverer 2 personer --------------- //
+  else if (serving == 2) {
+    document.querySelector(
+      ".beer1"
+    ).innerHTML = `<img src="dashbord/fuldol1-01.svg">`;
+
+    document.querySelector(
+      ".beer2"
+    ).innerHTML = `<img src="dashbord/fuldol2-01.svg">`;
+
+    document.querySelector(
+      ".beer3"
+    ).innerHTML = `<img src="dashbord/tomol3-01.svg">`;
+  }
+
+  // ---------------- servere 3 personer -------------- //
+  else if (serving == 3) {
+    document.querySelector(
+      ".beer1"
+    ).innerHTML = `<img src="dashbord/fuldol1-01.svg">`;
+
+    document.querySelector(
+      ".beer2"
+    ).innerHTML = `<img src="dashbord/fuldol2-01.svg">`;
+
+    document.querySelector(
+      ".beer3"
+    ).innerHTML = `<img src="dashbord/fuldol3-01.svg">`;
+  }
+
+  // ------------------- servere ikke nogen personer ------------ //
+  else {
+    document.querySelector(
+      ".beer1"
+    ).innerHTML = `<img src="dashbord/tomol1-01.svg">`;
+
+    document.querySelector(
+      ".beer2"
+    ).innerHTML = `<img src="dashbord/tomol2-01.svg">`;
+
+    document.querySelector(
+      ".beer3"
+    ).innerHTML = `<img src="dashbord/tomol3-01.svg">`;
+  }
+
+  setTimeout(checkServingStatus, 2000);
+}
+
+// check

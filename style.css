@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: amatic;
+  color: white;
 }
 @font-face {
   font-family: amatic;
@@ -22,7 +23,7 @@ body {
 header {
   height: 10vw;
   text-align: center;
-  border: 1px solid black;
+
   background-color: #a58141;
 }
 .skilt {
@@ -40,7 +41,6 @@ header {
   width: 100vw;
   display: grid;
   grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
-  border: 1px solid black;
 }
 /* contentAll, indeholder al content til dashboard, bortset fra barnavn slut*/
 
@@ -49,16 +49,20 @@ header {
   height: 30vw;
   grid-column: 1 / 6;
   display: grid;
-  border: 1px solid black;
+
   background-color: #a58141;
 }
 
 .chalkBoardLeft {
   grid-column: 1 / 2;
+  display: grid;
   width: 20vw;
   height: 30vw;
   background-image: url(tavle1.svg);
   background-repeat: no-repeat;
+  text-align: center;
+  font-size: 2vw;
+  padding: 2vw 0 2vw 0;
 }
 
 .shelfLeft {
@@ -94,6 +98,20 @@ header {
   background-repeat: no-repeat;
   /* margin: 0 0.5vw 0 0.5vw; */
 }
+
+.beers {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.beers span {
+  grid-column: span 1;
+}
+
+.beers span img {
+  width: 1.5vw;
+}
 /* upperSection, indeholdende kridtavler til data og hylder slut*/
 
 /* midSection section, indeholdende øl placeholder til data*/
@@ -102,10 +120,38 @@ header {
   grid-column: 1 / 6;
   height: 10vw;
   background-color: #a58141;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
-.beer {
+.beer1 {
+  grid-column: 2 / span 1;
+  z-index: 10;
+  justify-self: center;
+  position: relative;
+  top: -5vh;
 }
+
+.beer2 {
+  grid-column: 3 / span 1;
+  z-index: 10;
+  position: relative;
+
+  top: -2.7vh;
+}
+.beer3 {
+  grid-column: 4 / span 1;
+  z-index: 10;
+  position: relative;
+  top: -5vh;
+}
+
+.beer1 img,
+.beer2 img,
+.beer3 img {
+  width: 2.5vw;
+}
+
 /* midSection section, indeholdende øl placeholder til data slut*/
 
 /* lowerSection section, indeholdende bar m. græskar og stor kridttavle*/
